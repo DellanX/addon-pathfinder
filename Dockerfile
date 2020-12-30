@@ -9,6 +9,9 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # hadolint ignore=DL3003
 RUN \
 	apk add --no-cache \
+		composer \
+		git \
+		npm \
 		nginx=1.18.0-r1 \
 		php7 \
 		php7-ctype \ 
@@ -27,9 +30,7 @@ RUN \
 		php7-tokenizer \
 		php7-xml \
 	&& apk add --no-cache --virtual .build-dependencies \
-		git=2.26.2-r0 \
 		yarn=1.22.4-r0 \
-		composer \
 	&& yarn global add modclean \
 	\
 	&& git clone https://github.com/exodus4d/pathfinder.git /var/www/pathfinder \
